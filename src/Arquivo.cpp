@@ -94,8 +94,11 @@ void Arquivo::leArquivo()
             {
               No *no = new No();
               no->setChave(nomeTemp);                                                    
-              cout << no->getChave() << endl;
-              arvore.insertNode(no);
+              //cout << no->getChave() << endl;
+              arvore.insertNode(no);              
+              No *aux;
+              //aux =  arvore.iterativeSearch(no->getChave()); 
+              //cout << aux->getChave() << endl;
             }          
             else{}               
             adnome = false;
@@ -109,7 +112,7 @@ void Arquivo::leArquivo()
         { break; }
     }
 
-    //arvore.printInorder(arvore.getRaiz());
+    arvore.printInorder(arvore.getRaiz());
     //Saída ================================  
     /*
     ImprimeChaves(Chaves);

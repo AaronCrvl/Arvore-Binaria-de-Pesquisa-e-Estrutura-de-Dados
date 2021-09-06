@@ -1,0 +1,37 @@
+Ada Alice Anna Annie Bertha Bessie Carrie Catherine Clara Cora Daisy Edith Edna Elizabeth Ella Emma Ethel Eva Fannie Florence Frances Gertrude Grace Hattie Helen Ida Jennie Jessie Josephine Julia Laura Lena Lillian Lillie Louise Lucy Lula Mabel Maggie Margaret Martha Mary Mattie Maude Minnie Myrtle Nellie Pearl Rose Sarah
+Frances 326
+Josephine 92
+Bertha 334
+Lillian 157
+Ella 570
+Alice 279
+Myrtle 37
+Edith 297
+Minnie 12
+Grace 494
+Ada 309
+Gertrude 464
+Nellie 351
+Anna 248
+Margaret 56
+Lena 408
+Jessie 135
+Lillie 320
+Cora 65
+Annie 65
+Maggie 394
+Emma 139
+Maude 89
+Jennie 420
+Ethel 326
+Clara 196
+Louise 212
+Edna 78
+Lucy 216
+Pearl 225
+Bessie 164
+Ida 444
+Helen 381
+Fannie 106
+Florence 428
+Carrie Catherine Daisy Elizabeth Eva Hattie Julia Laura Lula Mabel Martha Mary Mattie Rose Sarah

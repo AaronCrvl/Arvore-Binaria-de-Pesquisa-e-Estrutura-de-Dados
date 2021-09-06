@@ -1,7 +1,7 @@
 #ifndef CELULA_H
 #define CELULA_H
 
-#include "..\tp\include\Dado.hpp"
+#include "../include/Dado.hpp"
 
 #include<string>
 #include<iostream>

@@ -1,5 +1,5 @@
-#include "..\tp\include\Celula.hpp"
-#include "..\tp\include\Dado.hpp"
+#include "../include/Celula.hpp"
+#include "../include/Dado.hpp"
 
 using namespace std;
 

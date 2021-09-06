@@ -1,0 +1,16 @@
+Alice Anna Annie Bertha Carrie Clara Cora Elizabeth Ella Emma Florence Grace Ida Laura Margaret Martha Mary Minnie Nellie Sarah
+Elizabeth 15
+Sarah 317
+Alice 90
+Anna 60
+Margaret 278
+Martha 130
+Annie 229
+Nellie 315
+Ella 334
+Laura 94
+Minnie 89
+Emma 181
+Florence 112
+Ida 7
+Bertha Carrie Clara Cora Grace Mary

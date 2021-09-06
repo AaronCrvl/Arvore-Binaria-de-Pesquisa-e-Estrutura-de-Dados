@@ -23,10 +23,9 @@ class Arquivo
         void Inicializa();
 
     private: 
-        string arquivo = "";     
+        string arquivo   = "";     
         string container = "";
-        string nomeTemp = "";  
-        int dadoTemp = 0;
-        int numeroLinhas = 0;                        
+        string nomeTemp  = "";  
+        int dadoTemp = 0;                         
 };
 #endif

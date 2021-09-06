@@ -1,4 +1,4 @@
-#include "..\tp\include\Dado.hpp"
+#include "../include/Dado.hpp"
 
 using namespace std;
 

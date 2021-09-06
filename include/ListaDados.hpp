@@ -1,8 +1,8 @@
 #ifndef LISTADADOS_H
 #define LISTADADOS_H
 
-#include "..\tp\include\Celula.hpp"
-#include "..\tp\include\Dado.hpp"
+#include "../include/Celula.hpp"
+#include "../include/Dado.hpp"
 
 #include<string>
 #include<iostream>

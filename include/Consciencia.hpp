@@ -1,7 +1,7 @@
 #ifndef CONSCIENCIA_H
 #define CONSCIENCIA_H
 
-#include "..\tp\include\ListaDados.hpp"
+#include "../include/ListaDados.hpp"
 
 #include<string>
 #include<iostream>
@@ -12,7 +12,7 @@ class Consciencia
 {                    
     public:                
         string getChave() { return this->Chave; }
-        void setChave(string chave) { this->Chave; }
+        void setChave(string chave) { this->Chave = chave; }
         ListaDados &getListaDados(){ return lista; }
 
     private:    

@@ -1,0 +1,9 @@
+Alice Anna Bertha Elizabeth Emma Ida Margaret Mary Minnie Sarah
+Sarah 158
+Alice 30
+Elizabeth 176
+Margaret 92
+Bertha 178
+Emma 195
+Anna 230
+Ida Mary Minnie

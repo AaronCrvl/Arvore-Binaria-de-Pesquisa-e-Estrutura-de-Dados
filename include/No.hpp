@@ -15,8 +15,8 @@ class No
         ~No(){}
 
         //Passar por referência ou não ??????
-        Consciencia &getConsciencia (){ return this->consciencia; }
-        void setConscienca(Consciencia c){ this-> consciencia = c; }
+        ListaDados &getLista (){ return this->lista; }
+        void setConscienca(ListaDados l){ this-> lista = l; }
 
         No *&getEsquerda(){ return this->esq; }
         No *&getDireita(){ return this->dir; }
@@ -24,12 +24,15 @@ class No
         void setChave(string c){ this->Chave = c; }
         void setEsquerda(No *esq) { this->esq = esq; }
         void setDireita(No *dir) { this->dir = dir; }
+        void addNr(int n) { SomaReg += n; }
+        int getNr() { return this->SomaReg; }
 
     private:
         string Chave = "";
-        Consciencia consciencia;
+        ListaDados lista;
         No *esq;
         No *dir;
+        int SomaReg = 0;
         
     friend class ArvoreBinaria;              
 };

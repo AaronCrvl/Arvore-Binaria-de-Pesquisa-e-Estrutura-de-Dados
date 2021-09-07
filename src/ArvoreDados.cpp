@@ -10,12 +10,11 @@ using namespace std;
 void ArvoreDados::insertNode(No * new_node) {
     if (raiz == NULL) {
       raiz = new_node;
-      cout << "Value Inserted as raiz node!" << endl;
+      //cout << "Value Inserted as raiz node!" << endl;
     } else {
       No * temp = raiz;
       while (temp != NULL) 
-        if (new_node -> getChave() == temp -> getChave()) {
-          addNr();
+        if (new_node -> getChave() == temp -> getChave()) {        
           return;
         } else if ((new_node -> getChave() < temp ->getChave()) && (temp ->getEsquerda() == NULL)) {
           temp -> setEsquerda(new_node);
@@ -25,7 +24,7 @@ void ArvoreDados::insertNode(No * new_node) {
           temp = temp -> getEsquerda();
         } else if ((new_node -> getChave() > temp ->getChave()) && (temp ->getDireita() == NULL)) {
           temp ->setDireita(new_node);
-          cout << "Value Inserted to the right!" << endl;
+          //cout << "Value Inserted to the right!" << endl;
           break;
         } else {
           temp = temp -> getDireita();
@@ -66,9 +65,21 @@ void ArvoreDados::printInorder(No * r) //  (Left, current node, Right)
     /* first recur on left child */
     printInorder(r -> getEsquerda());
     /* then print the data of node */
-    cout << r -> getChave() << " ";
+    cout << r -> getChave() << " " << r->getLista().Soma() << endl;
     /* now recur on right child */
     printInorder(r -> getDireita());
+  }
+
+  void ArvoreDados::WalkInOrder(No * r) //  (Left, current node, Right)
+  {
+    if (r == NULL)
+      return;
+    /* first recur on left child */
+    WalkInOrder(r -> getEsquerda());
+    /* then print the data of node */
+    cout << r->getChave() << " ";
+    /* now recur on right child */
+    WalkInOrder(r -> getDireita());
   }
 
   void ArvoreDados::printInorder(No * r, int tipo) //  (Left, current node, Right)

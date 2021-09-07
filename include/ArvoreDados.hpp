@@ -13,15 +13,14 @@ typedef string Chave;
 
 class ArvoreDados {
   public:
-    No * raiz;
+    No * raiz;    
   ArvoreDados() {
     raiz = NULL;
     //int SPACE = 0;
   }
 
   No *&getRaiz() { return this->raiz; }
-  void addNr() { nrRegistros += 1; }
-  int getNr() { return this->nrRegistros; }
+  
 
   bool isTreeEmpty() {
     if (raiz == NULL) {
@@ -31,6 +30,14 @@ class ArvoreDados {
     }
   }
 
+  string *criaEscopo(int _n)
+  {
+    string *n = new string();
+    n->resize(_n);
+    return n;
+  }
+
+  void WalkInOrder(No * r);
   void insertNode(No * new_node);
   No* insertRecursive(No *r, No *new_node);
 
@@ -53,7 +60,7 @@ class ArvoreDados {
       return recursiveSearch(r -> getDireita(), val);
   }
 
-  /*
+  
   No * deleteNode(No * r, int v) {
     // base case 
     if (r == NULL) {
@@ -92,7 +99,7 @@ class ArvoreDados {
       }
     }
     return r;
-  }*/
+  }
 
   private:
     int nrRegistros = 0;

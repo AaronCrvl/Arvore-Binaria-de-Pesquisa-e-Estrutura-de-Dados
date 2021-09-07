@@ -5,7 +5,7 @@ using namespace std;
 
 Celula::Celula()
 {
-    item.SetChave(-1);
+    item = -1;
     prox = NULL;
 }
 
@@ -14,12 +14,12 @@ Celula *&Celula::getProx()
     return this->prox;
 }
 
-Dado &Celula::getItem()
+int &Celula::getItem()
 {
     return this->item;
 }
 
-void Celula::setItem(Dado item)
+void Celula::setItem(int item)
 {
     this->item = item;
 }

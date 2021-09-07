@@ -10,33 +10,39 @@
 
 using namespace std;
 
-#pragma ragion  Funções Auxiliares
-
-void ImprimeChaves(string *chaves)
-{
-  while (int x = 0 < chaves->size())  
-  {
-    cout << chaves[x];
-    cout << " ";
-  }  
-}
-
-#pragma endregion
-
 #pragma region Leitura de Dados
+
+//Conversão binário -> inteiro
+int binaryToDecimal(string n)
+{
+    string num = n;
+    int dec_value = 0;
+ 
+    // Initializing base value to 1, i.e 2^0
+    int base = 1;
+ 
+    int len = num.length();
+    for (int i = len - 1; i >= 0; i--) {
+        if (num[i] == '1')
+            dec_value += base;
+        base = base * 2;
+    }
+ 
+    return dec_value;
+}
 
 void Arquivo::leArquivo()
 {	
     int linhas = 0;
 		fstream leitor;    
-		string temp = "";
-    int linhasparaleitura = 0;
+		string temp = "";        
+    int linhasparaleitura = 0;    
 		ArvoreDados arvore;
 
 		//Cria separador para leitura
 		bool divisa = false, adnome = false, addado = false;
 	
-		//Inicia leitura.
+		//Abertura
     leitor.open(this->arquivo, ios::in);
 
     //Inicia leitura.
@@ -45,9 +51,9 @@ void Arquivo::leArquivo()
       string a = container;
       if (linhas == 0)
       {
-       linhasparaleitura = std::stoi(a);      
-      }            
-
+       linhasparaleitura = std::stoi(a);  
+       string *keys = arvore.criaEscopo(linhasparaleitura);       
+      }                  
       //Monitoramento de linhas lidas               
       if( linhas != linhasparaleitura )
       {
@@ -78,7 +84,7 @@ void Arquivo::leArquivo()
                 temp += container[ax];
                 ++ax;                
               }
-              dadoTemp = stoi(temp, 0, 2);
+              dadoTemp = temp;
               divisa = false;
               temp.clear();
               break;
@@ -87,22 +93,32 @@ void Arquivo::leArquivo()
           
           //Atribuição de dados
           if (adnome == true && addado == true) 
-          {            
-            //se não existir a conciencia
-            //arvore.Pesquisa(nomeTemp).getChave() == nomeTemp
-            if( 1 == 1 )
+          {     
+            if( nomeTemp == "" )
+            {
+              keys = dadoTemp;
+            }  
+            else{}     
+            //se não existir a conciencia            
+            if( !arvore.iterativeSearch(nomeTemp) )
             {
               No *no = new No();
-              no->setChave(nomeTemp);                                                    
-              //cout << no->getChave() << endl;
-              arvore.insertNode(no);              
-              No *aux;
-              //aux =  arvore.iterativeSearch(no->getChave()); 
-              //cout << aux->getChave() << endl;
+              int ax = 0;
+              ax = binaryToDecimal(dadoTemp);
+              no->setChave(nomeTemp);                                                                  
+              no->getLista().insereFinal(ax);            
+              arvore.insertNode(no);                            
             }          
-            else{}               
+            else
+            {
+              int ax = 0;
+              ax = binaryToDecimal(dadoTemp);
+              arvore.iterativeSearch(nomeTemp)->getLista().insereFinal(ax);
+            }               
             adnome = false;
-            addado = false;         
+            addado = false;  
+            nomeTemp.clear();
+            dadoTemp.clear();       
           } 
           else {}
         }   
@@ -110,17 +126,12 @@ void Arquivo::leArquivo()
       }
       else
         { break; }
-    }
-
+    }    
+    
+    //Saída 
+    arvore.WalkInOrder(arvore.getRaiz());
+    cout << endl;
     arvore.printInorder(arvore.getRaiz());
-    //Saída ================================  
-    /*
-    ImprimeChaves(Chaves);
-    cout << "\n";
-    No *r;
-    r = arvore.getRaiz();
-    arvore.printInorder(r); 
-    */
 }
 
 #pragma endregion

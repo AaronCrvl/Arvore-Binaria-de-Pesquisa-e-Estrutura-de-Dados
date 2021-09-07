@@ -7,7 +7,7 @@ using namespace std;
 
 No::No()
 {
-    consciencia.setChave("ZZZ");
+    //lista.setChave("ZZZ");
     esq = NULL;
     dir = NULL;
 }

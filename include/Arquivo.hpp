@@ -21,11 +21,13 @@ class Arquivo
         void leArquivo();        
         //Inicializa as variáveis
         void Inicializa();
+        //
+        //int Arquivo::binaryToDecimal(string n);
 
     private: 
         string arquivo   = "";     
         string container = "";
         string nomeTemp  = "";  
-        int dadoTemp = 0;                         
+        string dadoTemp  = "";                                 
 };
 #endif

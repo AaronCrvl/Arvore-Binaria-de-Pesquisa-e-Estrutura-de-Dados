@@ -17,13 +17,13 @@ class ListaDados
         Dado getDado(int pos);
         void setDado(Dado item, int pos);
         void insereInicio(Dado item);
-        void insereFinal(Dado item);
+        void insereFinal(int item);
         void inserePosicao(Dado item, int pos);
         Dado removeInicio();
         Dado removeFinal();
         Dado removePosicao(int pos);
         Dado Pesquisa(TipoChave c);
-        void Imprime();
+        int Soma();
         void Limpa();
         int getTamanho() { return tamanho;};
         bool Vazia() { return tamanho == 0;};

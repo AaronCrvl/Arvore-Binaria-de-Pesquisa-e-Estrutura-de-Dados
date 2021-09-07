@@ -13,12 +13,12 @@ class Celula
     public:
         Celula();
         Celula *&getProx();
-        Dado &getItem();
-        void setItem(Dado item);
+        int &getItem();
+        void setItem(int item);
         void setProx(Celula *p);
     
     private:
-        Dado item;
+        int item = 0;
         Celula *prox;
 
     friend class ListaEncadeada;    

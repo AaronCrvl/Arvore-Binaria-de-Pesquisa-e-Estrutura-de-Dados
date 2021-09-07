@@ -4,6 +4,9 @@
 
 using namespace std;
 
+#include <string>
+#include <string.h>
+
 ListaDados::ListaDados() 
 {
     primeiro = new Celula();
@@ -40,47 +43,14 @@ Dado ListaDados::getDado(int pos){
     return p->getItem();
 }
 
-void ListaDados::setDado(Dado item, int pos){
-    Celula *p;
-    p = Posiciona(pos);
-    p->setItem(item);
-}
-
-void ListaDados::insereInicio(Dado item)
-{
-    Celula *nova;
-    nova = new Celula();
-    nova->setItem(item);
-    nova->setProx(primeiro->getProx());
-    primeiro->setProx(nova);
-    tamanho++;
-    
-    if(nova->getProx() == NULL)
-        ultimo = nova;
-}
-
-void ListaDados::insereFinal(Dado item)
-{    
+void ListaDados::insereFinal(int item)
+{        
     Celula *nova;
     nova = new Celula();
     nova->setItem(item);
     ultimo->setProx(nova);
     ultimo = nova;    
-    tamanho++;
-}
-
-void ListaDados::inserePosicao(Dado item, int pos) {
-    
-    Celula *p, *nova;
-    p = Posiciona(pos,true); // posiciona na célula anterior
-    nova = new Celula();
-    nova->setItem(item);
-    nova->setProx(p->getProx());
-    p->setProx(nova);
-    tamanho++;
-
-    if(nova->getProx() == NULL)
-        ultimo = nova;
+    tamanho++;  
 }
 
 Dado ListaDados::removeInicio() {
@@ -135,39 +105,18 @@ Dado ListaDados::removePosicao(int pos) {;
     return aux;
 }
 
-Dado ListaDados::Pesquisa(TipoChave c) {
-    Dado aux;
-    Celula *p;
-
-    if (tamanho == 0)
-        throw "ERRO: Lista vazia!";
-
-    p = primeiro->getProx();
-    aux.SetChave(-1);
-
-    while (p!=NULL) 
-    {
-        if (p->getItem().GetChave() == c) 
-        {
-            aux = p->getItem();
-            break;
-        }
-        
-        p = p->getProx();
-    }
-    return aux;
-}
-
-void ListaDados::Imprime()
+int ListaDados::Soma()
 {
     Celula *p;
     p = primeiro->getProx();
+    int a = 0;
     while (p!=NULL)
     {
-        p->getItem().Imprime();
+        a += p->getItem();
         p = p->getProx();
-    }
-    //printf("\n");
+    }    
+
+    return a;
 }
 
 void ListaDados::Limpa() 

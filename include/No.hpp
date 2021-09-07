@@ -1,8 +1,7 @@
 #ifndef NO_H
 #define NO_H
 
-#include "../include/Consciencia.hpp"
-
+#include "../include/ListaDados.hpp"
 #include<string>
 #include<iostream>
 
@@ -12,7 +11,11 @@ class No
 {                    
     public:
         No();
-        ~No(){}
+        ~No()
+        {
+            this->esq = NULL;
+            this->dir = NULL;
+        }
 
         //Passar por referência ou não ??????
         ListaDados &getLista (){ return this->lista; }

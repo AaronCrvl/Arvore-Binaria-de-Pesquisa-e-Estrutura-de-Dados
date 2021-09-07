@@ -36,7 +36,11 @@ void Arquivo::leArquivo()
     int linhas = 0;
 		fstream leitor;    
 		string temp = "";        
-    int linhasparaleitura = 0;    
+    int linhasparaleitura = 0;  
+    string keys[1000];      
+    int keycount = 0;
+    string NaoEnviados[1000];
+    int NaoEnviadosCount = 0;
 		ArvoreDados arvore;
 
 		//Cria separador para leitura
@@ -51,8 +55,7 @@ void Arquivo::leArquivo()
       string a = container;
       if (linhas == 0)
       {
-       linhasparaleitura = std::stoi(a);  
-       string *keys = arvore.criaEscopo(linhasparaleitura);       
+       linhasparaleitura = std::stoi(a);         
       }                  
       //Monitoramento de linhas lidas               
       if( linhas != linhasparaleitura )
@@ -94,11 +97,6 @@ void Arquivo::leArquivo()
           //Atribuição de dados
           if (adnome == true && addado == true) 
           {     
-            if( nomeTemp == "" )
-            {
-              keys = dadoTemp;
-            }  
-            else{}     
             //se não existir a conciencia            
             if( !arvore.iterativeSearch(nomeTemp) )
             {
@@ -116,7 +114,9 @@ void Arquivo::leArquivo()
               arvore.iterativeSearch(nomeTemp)->getLista().insereFinal(ax);
             }               
             adnome = false;
-            addado = false;  
+            addado = false; 
+            NaoEnviados[NaoEnviadosCount] = nomeTemp;
+            ++NaoEnviadosCount; 
             nomeTemp.clear();
             dadoTemp.clear();       
           } 
@@ -124,104 +124,40 @@ void Arquivo::leArquivo()
         }   
         ++linhas;   
       }
-      else
-        { break; }
+      else 
+      { 
+        string ax = container;        
+        if( ax.find('1') == std::string::npos && ax.find('0') == std::string::npos )
+        {
+          keys[keycount] = container;          
+          ++keycount;   
+        }             
+      }
     }    
     
     //Saída 
-    arvore.WalkInOrder(arvore.getRaiz());
-    cout << endl;
     arvore.printInorder(arvore.getRaiz());
+    cout << endl;
+
+    string resKey[keycount];
+    int resSum[keycount];
+    
+    for( int i=0; i<keycount; ++i )
+    {
+      resKey[i] = arvore.iterativeSearch(keys[i])->getChave();
+      resSum[i] = arvore.iterativeSearch(keys[i])->getNr();
+    }
+    for( int a=0; a<keycount; ++a )
+    {
+      cout << resKey[a] << " " << arvore.iterativeSearch(resKey[a])->getLista().Soma() << endl;      
+    }
+    for( int a=0; a<keycount; ++a )
+    {      
+      arvore.iterativeSearch(keys[a])->~No();
+    }
+    arvore.printInorder(arvore.getRaiz()); 
 }
 
 #pragma endregion
 
 // !__Arquivo
-
-/*
-leitor.open(arquivo, ios::in);
-    int numeroLinhas = 0;
-    getline(leitor, container);
-    numeroLinhas = stoi(container);
-    string Chaves[numeroLinhas];
-    
-    if( linhas <= numeroLinhas )
-    {      
-      while (getline(leitor, container))
-      {
-        if( linhas == 0 ){}
-        else
-        {                    
-          temp.clear();
-          for (int i = 0; i < container.size(); ++i)
-          {            
-            int aux = 0;
-            if (container[i] != ' ' && container[i] != '1' && container[i] != '0')
-            {
-              temp += container[i];
-            }
-
-            if (container[i] == ' ')
-            {
-              divisa = true;
-              Chaves[aux] = temp;
-              ++aux; 
-              nomeTemp = temp;
-              adnome = true;
-              temp.clear();
-            }
-            else
-            {
-              if (divisa)
-              {
-                int ax = i;
-                addado = true;
-                while (ax < container.size())
-                {
-                  temp += container[ax];
-                  ++ax;
-                }
-
-                //Convesão do tipo em inteiro
-                dadoTemp = stoi(temp);
-                divisa = false;
-                temp.clear();
-                break;
-              }
-            }
-            
-            //Atribuição de dados
-            if (adnome == true && addado == true)
-            {              
-              cout << nomeTemp << endl;
-              cout << dadoTemp << endl;
-              cout << endl;
-              /*
-              // Se já existe esta consciência
-              if (nomeTemp == arvore.Pesquisa(nomeTemp).getChave())
-              {
-                Dado d;
-                d.SetChave(dadoTemp);
-                arvore.Pesquisa(nomeTemp).getListaDados().insereFinal(d);
-                arvore.Pesquisa(nomeTemp).getListaDados().addTamanho();              
-              }
-
-              // se não existe esta consciência
-              else
-              {
-                Consciencia c;
-                c.setChave(nomeTemp);
-                Dado d;
-                d.SetChave(dadoTemp);
-
-                c.getListaDados().insereFinal(d);
-                arvore.Insere(c);
-              }                    
-            } else{}
-          }                     
-        } 
-        ++linhas;                        
-      }
-    } 
-    else {} 
-*/

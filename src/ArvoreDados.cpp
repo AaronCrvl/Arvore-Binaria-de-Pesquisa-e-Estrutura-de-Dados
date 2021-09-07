@@ -1,5 +1,4 @@
 #include "../include/ArvoreDados.hpp"
-#include "../include/Consciencia.hpp"
 #include "../include/No.hpp"
 
 #include <string>
@@ -59,20 +58,20 @@ No* ArvoreDados::insertRecursive(No *r, No *new_node)
 
 
 void ArvoreDados::printInorder(No * r) //  (Left, current node, Right)
-  {
+  {    
     if (r == NULL)
       return;
     /* first recur on left child */
     printInorder(r -> getEsquerda());
     /* then print the data of node */
-    cout << r -> getChave() << " " << r->getLista().Soma() << endl;
+    cout << r -> getChave() << " ";     
     /* now recur on right child */
     printInorder(r -> getDireita());
   }
 
   void ArvoreDados::WalkInOrder(No * r) //  (Left, current node, Right)
   {
-    if (r == NULL)
+    if (r == NULL)    
       return;
     /* first recur on left child */
     WalkInOrder(r -> getEsquerda());
@@ -81,19 +80,6 @@ void ArvoreDados::printInorder(No * r) //  (Left, current node, Right)
     /* now recur on right child */
     WalkInOrder(r -> getDireita());
   }
-
-  void ArvoreDados::printInorder(No * r, int tipo) //  (Left, current node, Right)
-  {
-    if (r == NULL)
-      return;
-    /* first recur on left child */
-    printInorder(r -> getEsquerda());
-    /* then print the data of node */
-    cout << r -> getChave() << " ";
-    /* now recur on right child */
-    printInorder(r -> getDireita());
-  }
-
 
   No * ArvoreDados::iterativeSearch(string v) {
     if (raiz == NULL) {
@@ -113,110 +99,64 @@ void ArvoreDados::printInorder(No * r) //  (Left, current node, Right)
     }
   }
 
+ No * ArvoreDados::recursiveSearch(No * r, string val) {
+ if (r == NULL || r ->getChave() == val)
+      return r;
 
-/*
-No *ArvoreDados::Pesquisa(Chave chave) 
-{
-    return PesquisaRecursivo(raiz, chave);
-}
+    else if (val < r -> getChave())
+      return recursiveSearch(r -> getEsquerda(), val);
 
-No *ArvoreDados::PesquisaRecursivo(No *no, Chave chave) 
-{        
-    if ( no == nullptr ) 
-    {        
-        //return no;
-    }
-    cout << "Aqui" << endl;
-    if (chave < no->getConsciencia().getChave())
-        return PesquisaRecursivo(no->getEsquerda(), chave);
-    
-    else if (chave>no->getConsciencia().getChave())
-        return PesquisaRecursivo(no->getDireita(), chave);    
-    
     else
-        return no;
-}
+      return recursiveSearch(r -> getDireita(), val);
+  }
 
-void ArvoreDados::Insere(No *no)
-{
-    InsereRecursivo(raiz, no->getConsciencia() );
-}
-
-void ArvoreDados::InsereRecursivo(No* &p, Consciencia c)
-{ 
-    if(p == nullptr){
-        p = new No();
-        p->setConscienca(c);
+  No * ArvoreDados::deleteNode(No * r, string v) {
+    // base case 
+    if (r == NULL) {
+      return NULL;
     }
-    else
-    {
-    if(c.getChave() < p->getConsciencia().getChave())
-        InsereRecursivo(p->getEsquerda(), c);
-    else
-        InsereRecursivo(p->getDireita(), c);
+    // If the key to be deleted is smaller than the raiz's key, 
+    // then it lies in left subtree 
+    else if (v < r ->getChave()) {
+      r -> setEsquerda(deleteNode(r -> getEsquerda(), v));
     }
-}
-
-void ArvoreDados::Remove(Chave chave) 
-{
-    return RemoveRecursivo(raiz, chave);
-}
-
-void ArvoreDados::RemoveRecursivo(No* &no, Chave chave)
-{
-    No *aux;
-    if (no == NULL) {
-    throw("Item nao está presente");
+    // If the key to be deleted is greater than the raiz's key, 
+    // then it lies in right subtree 
+    else if (v > r ->getChave()) {
+      r -> setDireita(deleteNode(r -> getEsquerda(), v));
     }
-    if (chave < no->getConsciencia().getChave())
-        return RemoveRecursivo(no->getEsquerda(), chave);
-    else if (chave>no->getConsciencia().getChave())
-        return RemoveRecursivo(no->getDireita(), chave);
-    else 
-    {
-        if (no->getDireita() == NULL) {
-            aux = no;
-            no = no->getEsquerda();
-            free(aux);
-        }
-        else if(no->getEsquerda() == NULL) {
-            aux = no;
-            no = no->getDireita();
-            free(aux);
-        }
-        else
-        Antecessor(no, no->getDireita());
+    // if key is same as raiz's key, then This is the node to be deleted 
+    else {
+      // node with only one child or no child 
+      if (r -> getEsquerda() == NULL) {
+        No * temp = r -> getDireita();
+        delete r;
+        return temp;
+      } else if (r -> getDireita() == NULL) {
+        No * temp = r -> getEsquerda();
+        delete r;
+        return temp;
+      } else {
+        // node with two children: Get the inorder successor (smallest 
+        // in the right subtree) 
+        No * temp = minValueNode(r -> getDireita());
+        // Copy the inorder successor's content to this node 
+        r -> setChave(temp ->getChave());
+        // Delete the inorder successor 
+        r -> setDireita(deleteNode(r -> getDireita(), temp -> getChave()));
+        //deleteNode(r->right, temp->value); 
+      }
     }
-}
+    return r;
+  }
 
-void ArvoreDados::Antecessor(No *q, No* &r){
-    
-    if(r->getDireita() != NULL) {
-        Antecessor(q, r->getDireita());
-        return;
+  No * ArvoreDados::minValueNode(No * node) {
+    No * current = node;
+    /* loop down to find the leftmost leaf */
+    while (current -> getEsquerda() != NULL) {
+      current = current -> getEsquerda();
     }
-    
-    q->setConscienca(r->getConsciencia());
-    q = r;
-    r = r->getEsquerda();
-    free(q);
-}
-
-void ArvoreDados::printInorder(No *no)
-{
-    if (no == NULL)
-        return;
-    
-    cout << " aqui ";    
-    printInorder(no->getEsquerda());
-        
-    cout << no->getConsciencia().getChave();
-    cout << " ";
-    cout << no->getConsciencia().getListaDados().getTamanho();
-    cout << endl;
-     
-    printInorder(no->getDireita());
-}
-*/
+    return current;
+  }
 
 // !__ArvoreDados

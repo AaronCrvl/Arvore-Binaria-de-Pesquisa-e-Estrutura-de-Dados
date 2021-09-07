@@ -1,11 +1,12 @@
 #include "../include/ListaDados.hpp"
 #include "../include/Celula.hpp"
-#include "../include/Dado.hpp"
 
 using namespace std;
 
 #include <string>
 #include <string.h>
+
+#pragma region Métodos da Classe
 
 ListaDados::ListaDados() 
 {
@@ -15,7 +16,7 @@ ListaDados::ListaDados()
 
 ListaDados::~ListaDados()
 {
-    Limpa();
+    //Limpa();
     delete primeiro;
 }
 
@@ -36,13 +37,6 @@ Celula* ListaDados::Posiciona(int pos, bool antes=false)
     p = p->getProx();
     return p;
 }
-
-Dado ListaDados::getDado(int pos){
-    Celula *p;
-    p = Posiciona(pos);
-    return p->getItem();
-}
-
 void ListaDados::insereFinal(int item)
 {        
     Celula *nova;
@@ -51,58 +45,6 @@ void ListaDados::insereFinal(int item)
     ultimo->setProx(nova);
     ultimo = nova;    
     tamanho++;  
-}
-
-Dado ListaDados::removeInicio() {
-    Dado aux;
-    Celula *p;
-    
-    if (tamanho == 0)
-    throw "ERRO: Lista vazia!";
-    p = primeiro->getProx();
-    primeiro->setProx(p->getProx());
-    tamanho--;
-    if(primeiro->getProx() == NULL)
-        ultimo = primeiro;
-
-    aux = p->getItem();
-    delete p;
-    return aux;
-}
-
-Dado ListaDados::removeFinal() {
-    Dado aux;
-    Celula *p;
-    if (tamanho == 0)
-    throw "ERRO: Lista vazia!";
-    // posiciona p na celula anterior à última
-    p = Posiciona(tamanho, true);
-    p->setProx(NULL);
-    tamanho--;
-    aux = ultimo->getItem();
-    delete ultimo;
-    ultimo = p;
-    return aux;
-}
-
-Dado ListaDados::removePosicao(int pos) {;
-    Dado aux;
-    Celula *p, *q;
-    if (tamanho == 0)
-        throw "ERRO: Lista vazia!";
-
-    // posiciona p na celula anterior à pos
-    p = Posiciona(pos, true);
-    q = p->getProx();
-    p->setProx(q->getProx());
-    tamanho--;
-    aux = q->getItem();
-    delete q;
-
-    if(p->getProx() == NULL)
-        ultimo = p;
-
-    return aux;
 }
 
 int ListaDados::Soma()
@@ -119,20 +61,7 @@ int ListaDados::Soma()
     return a;
 }
 
-void ListaDados::Limpa() 
-{
-    Celula *p;
-    p = primeiro->getProx();
 
-    while (p!=NULL) 
-    {
-        primeiro->setProx(p->getProx());
-        delete p;
-        p = primeiro->getProx();
-    }
-    
-    ultimo = primeiro;
-    tamanho = 0;
-}
+#pragma endregion
 
 // !__ListaDados

@@ -2,7 +2,6 @@
 #define LISTADADOS_H
 
 #include "../include/Celula.hpp"
-#include "../include/Dado.hpp"
 
 #include<string>
 #include<iostream>
@@ -12,22 +11,20 @@ using namespace std;
 class ListaDados
 { 
     public:
+        //Construtor padrão da classe
         ListaDados();
-        ~ListaDados();
-        Dado getDado(int pos);
-        void setDado(Dado item, int pos);
-        void insereInicio(Dado item);
+        //Destrutor padrão da classe
+        ~ListaDados();                
+        //Inseri dado ao final de lista        
         void insereFinal(int item);
-        void inserePosicao(Dado item, int pos);
-        Dado removeInicio();
-        Dado removeFinal();
-        Dado removePosicao(int pos);
-        Dado Pesquisa(TipoChave c);
-        int Soma();
-        void Limpa();
-        int getTamanho() { return tamanho;};
-        bool Vazia() { return tamanho == 0;};
+        //Incrementar o tamanho da lista        
         void addTamanho() { this->tamanho++; }
+        //Soma os dados da lista
+        int Soma();
+        //Retorna o tamanho da lista
+        int getTamanho() { return tamanho;}; 
+        //Verificar se a lista está vazia       
+        bool Vazia() { return tamanho == 0;};
 
     private:
         int tamanho=0;

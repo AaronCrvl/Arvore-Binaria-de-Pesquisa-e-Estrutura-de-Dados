@@ -1,8 +1,6 @@
 #ifndef ARQUIVO_H
 #define ARQUIVO_H
 
-// #include "../include/Dados.hpp"
-
 #include<string>
 #include<iostream>
 
@@ -15,14 +13,10 @@ class Arquivo
         Arquivo(){}
         //Destrutor
         ~Arquivo(){}   
-        //
+        //Seta o nome de do arquivo para leitura
         void SetArquivo(string a){ this->arquivo = a; }
         // Lê o arquivo            
         void leArquivo();        
-        //Inicializa as variáveis
-        void Inicializa();
-        //
-        //int Arquivo::binaryToDecimal(string n);
 
     private: 
         string arquivo   = "";     

@@ -9,7 +9,7 @@
 using namespace std;
 
 // cd TP3ED\tp\src\
-// g++ -o x Main.cpp Arquivo.cpp ArvoreDados.cpp Celula.cpp Dado.cpp ListaDados.cpp No.cpp
+// g++ -o x Main.cpp Arquivo.cpp ArvoreDados.cpp Celula.cpp ListaDados.cpp No.cpp
 
 int main(int argc, char *argv[])
 {

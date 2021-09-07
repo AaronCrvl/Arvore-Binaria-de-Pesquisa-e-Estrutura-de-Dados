@@ -6,8 +6,7 @@
 using namespace std;
 
 No::No()
-{
-    //lista.setChave("ZZZ");
+{    
     esq = NULL;
     dir = NULL;
 }

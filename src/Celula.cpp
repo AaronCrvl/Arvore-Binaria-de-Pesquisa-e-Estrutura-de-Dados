@@ -1,7 +1,8 @@
 #include "../include/Celula.hpp"
-#include "../include/Dado.hpp"
 
 using namespace std;
+
+#pragma region Métodos da Classe
 
 Celula::Celula()
 {
@@ -9,12 +10,12 @@ Celula::Celula()
     prox = NULL;
 }
 
-Celula *&Celula::getProx()
+Celula*& Celula::getProx()
 {
     return this->prox;
 }
 
-int &Celula::getItem()
+int& Celula::getItem()
 {
     return this->item;
 }
@@ -24,9 +25,11 @@ void Celula::setItem(int item)
     this->item = item;
 }
 
-void Celula::setProx(Celula *p)
+void Celula::setProx(Celula* p)
 {
     this->prox = p;
 }
+
+#pragma endregion
 
 // !__Celula

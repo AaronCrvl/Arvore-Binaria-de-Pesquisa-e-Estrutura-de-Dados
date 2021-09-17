@@ -17,7 +17,7 @@ Sumário:
 
 1.	Introdução:
 
-Esta documentação tem como objetivo realizar a descrição do Trabalho Prático 3, que tem a finalidade criar um sistema que dado dois 
+Esta documentação tem como objetivo realizar a descrição do Implemento 3, que tem a finalidade criar um sistema que dado dois 
 campos distintos que representam o Nome da Pessoa e seu ID de consciência, são armazenados em uma estrutura de dado do tipo árvore binária 
 para tratativa e envios posteriores, assim como, o uso da estrutura de lista para organizar os dados de cada nó.
 

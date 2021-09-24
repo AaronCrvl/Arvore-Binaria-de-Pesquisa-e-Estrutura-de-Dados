@@ -1,4 +1,4 @@
-
+# Árvore Binária de Pesquisa e Estrutura de Dados
 Sumário:
 
 1 – Introdução
@@ -9,19 +9,13 @@ Sumário:
 9 – Instruções para Compilação e Execução
 
 
-
-
-
-
-
-
-1.	Introdução:
+## 1.	Introdução:
 
 Esta documentação tem como objetivo realizar a descrição do Implemento 3, que tem a finalidade criar um sistema que dado dois 
 campos distintos que representam o Nome da Pessoa e seu ID de consciência, são armazenados em uma estrutura de dado do tipo árvore binária 
 para tratativa e envios posteriores, assim como, o uso da estrutura de lista para organizar os dados de cada nó.
 
-2.	Implementação:
+## 2.	Implementação:
 O programa foi desenvolvido na linguagem C++, compilada pelo compilador G++ da GNU Compiler Collection.
 
 A-	Classe:
@@ -37,7 +31,7 @@ Esta parte fica reponsável pela leitura do arquivo e separação de suas linhas
 (STRING) nomeTemp: Nome/Chave da consciência a ser inserida na árvore.
 (STRING) dadoTemp: Dado que deve ser inserido na lista de dados dentro do nó de mesma chave.
 
-2 – Métodos:
+## 2 – Métodos:
 (VOID) SetArquivo: Seta o nome do arquivo para leitura.
 (VOID) leArquivo: Lê o arquivo.
 
@@ -113,7 +107,7 @@ Esta classe fica responsável por representar a lista de dados de cada pessoa.
 
  
 
-3.	Análise de Complexidade:
+## 3.	Análise de Complexidade:
 
 Classe ArvoreDados:
 
@@ -158,7 +152,7 @@ Segue linearmente o tamanho da lista, logo, O(N).
 
 
 
-4.	Conclusões:
+## 4.	Conclusões:
 
 O objetivo deste trabalho é implementar e também analisar o funcionamento da estrutura de dados tipo árvore.
 O trabalho desafia o aluno a realizar diversas operações que testam a assertividade do código quando a estrutura é modelada e posteriormente remodelada.
